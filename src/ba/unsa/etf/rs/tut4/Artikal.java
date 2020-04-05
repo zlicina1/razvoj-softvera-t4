@@ -1,7 +1,7 @@
 package ba.unsa.etf.rs.tut4;
 
-import java.util.ArrayList;
-import java.util.Objects;
+import javax.print.DocFlavor;
+import java.util.*;
 
 public class Artikal {
     private String sifra, naziv;
@@ -16,8 +16,11 @@ public class Artikal {
         this.cijena = cijena;
     }
 
-    public static void izbaciDuplikate(ArrayList<Artikal> lista){
-
+    public static ArrayList<Artikal> izbaciDuplikate(ArrayList<Artikal> lista){
+        HashSet<Artikal> temp = new HashSet<>(lista);
+        lista.clear();
+        lista.addAll(temp);
+        return lista;
     }
     public String getSifra() {
         return sifra;
