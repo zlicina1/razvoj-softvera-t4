@@ -8,24 +8,12 @@ public class Artikal {
     private double cijena;
 
     public Artikal(String sifra, String naziv, double cijena) {
-        if (cijena < 1) throw new IllegalArgumentException("Cijena je negativna");
-        if (naziv.isEmpty()) throw new IllegalArgumentException("Naziv je prazan");
-        if (sifra.isEmpty()) throw new IllegalArgumentException("Šifra je prazna");
+        izuzetakCijena(cijena);
+        izuzetakSifra(sifra);
+        izuzetakNaziv(naziv);
         this.sifra = sifra;
         this.naziv = naziv;
         this.cijena = cijena;
-    }
-
-    @Override
-    public String toString() {
-        if (cijena < 1) throw new IllegalArgumentException("Cijena je negativna");
-        if (naziv.isEmpty()) throw new IllegalArgumentException("Naziv je prazan");
-        if (sifra.isEmpty()) throw new IllegalArgumentException("Šifra je prazna");
-        return "Artikal{" +
-                "sifra='" + sifra + '\'' +
-                ", naziv='" + naziv + '\'' +
-                ", cijena=" + cijena +
-                '}';
     }
 
     public static void izbaciDuplikate(ArrayList<Artikal> lista){
@@ -36,7 +24,7 @@ public class Artikal {
     }
 
     public void setSifra(String sifra) {
-        if (sifra.isEmpty()) throw new IllegalArgumentException("Šifra je prazna");
+        izuzetakSifra(sifra);
         this.sifra = sifra;
     }
 
@@ -45,7 +33,7 @@ public class Artikal {
     }
 
     public void setNaziv(String naziv) {
-        if (naziv.isEmpty()) throw new IllegalArgumentException("Naziv je prazan");
+        izuzetakNaziv(naziv);
         this.naziv = naziv;
     }
 
@@ -54,8 +42,24 @@ public class Artikal {
     }
 
     public void setCijena(double cijena) {
-        if (cijena < 1) throw new IllegalArgumentException("Cijena je negativna");
+        izuzetakCijena(cijena);
         this.cijena = cijena;
+    }
+
+    // Izuzeci
+    private void izuzetakNaziv(String naziv){
+        if (naziv.isEmpty()) throw new IllegalArgumentException("Naziv je prazan");
+    }
+    private void izuzetakSifra(String sifra){
+        if (sifra.isEmpty()) throw new IllegalArgumentException("Šifra je prazna");
+    }
+    private void izuzetakCijena(double cijena){
+        if (cijena < 1) throw new IllegalArgumentException("Cijena je negativna");
+    }
+
+    @Override
+    public String toString() {
+        return sifra + "," + naziv + "," + cijena;
     }
 
     @Override
