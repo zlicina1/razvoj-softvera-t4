@@ -140,4 +140,22 @@ class ArtikalTest {
         assertFalse(lista.contains(new Artikal("ABC", "Usluga", 100)));
         assertFalse(lista.contains(new Artikal("DEF", "Usluga", 100)));
     }
+
+    @Test
+    void Test_PrazanKonstruktor(){
+        Artikal a = new Artikal();
+        double cijena = 0;
+        String naziv = null;
+        String sifra = null;
+        assertEquals(sifra,a.getSifra());
+        assertEquals(naziv,a.getNaziv());
+        assertEquals(cijena,a.getCijena());
+    }
+
+    @Test
+    void Konstruktor_JedanParametar(){
+        Artikal a = new Artikal("PRO1,Proizvod1,20");
+        // dodata .0 kod cijene
+        assertEquals("PRO1,Proizvod1,20.0",a.toString());
+    }
 }
