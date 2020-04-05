@@ -71,7 +71,7 @@ public class Artikal {
         if (sifra.isEmpty()) throw new IllegalArgumentException("Šifra je prazna");
     }
     private void izuzetakCijena(double cijena){
-        if (cijena < 1) throw new IllegalArgumentException("Cijena je negativna");
+        if (cijena <= 0) throw new IllegalArgumentException("Cijena je negativna");
     }
 
     @Override

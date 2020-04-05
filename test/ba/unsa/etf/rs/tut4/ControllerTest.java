@@ -38,7 +38,7 @@ class ControllerTest {
         assertNotNull(txa1);
         assertNotNull(txa2);
     }
-
+/*
     @Test
     void IspravnostTextArea(FxRobot robot) {
         Button btn = robot.lookup("#dodaj").queryAs(Button.class);
@@ -49,6 +49,21 @@ class ControllerTest {
         robot.clickOn(btn);
         // dodato .0 na cijenu posto je cijena tipa double
         // i dodato '\n' zato sto smo u metodi naveli da ide u novi red
-        assertEquals("Pro1,Proizvod1,50.0\n",txa2.getText().toString());
+        assertEquals("Pro1,Proizvod1,50.0\n",txa2.getText());
     }
+*/
+    @Test
+    void dodaj_artikle(FxRobot robot) {
+        Button btn = robot.lookup("#dodaj").queryAs(Button.class);
+        TextArea txa1 = robot.lookup("#input").queryAs(TextArea.class);
+        TextArea txa2 = robot.lookup("#output").queryAs(TextArea.class);
+        robot.clickOn(txa1);
+        robot.write("Pro2,Proizvod2,1150.0");
+        robot.clickOn(btn);
+        // dodato .0 na cijenu posto je cijena tipa double
+        // i dodato '\n' zato sto smo u metodi naveli da ide u novi red
+        assertEquals("Pro2,Proizvod2,1150.0\n",txa2.getText());
+    }
+
+
 }
