@@ -7,6 +7,20 @@ public class Artikal {
     private String sifra, naziv;
     private double cijena;
 
+    public Artikal() {
+    }
+
+    public Artikal(String unos) {
+        String[] dijelovi = unos.split(",");
+        sifra = dijelovi[0];
+        naziv = dijelovi[1];
+        cijena = Double.parseDouble(dijelovi[2]);
+        izuzetakCijena(cijena);
+        izuzetakSifra(sifra);
+        izuzetakNaziv(naziv);
+    }
+
+
     public Artikal(String sifra, String naziv, double cijena) {
         izuzetakCijena(cijena);
         izuzetakSifra(sifra);
